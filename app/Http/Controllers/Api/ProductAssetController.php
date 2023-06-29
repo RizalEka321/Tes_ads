@@ -29,13 +29,13 @@ class ProductAssetController extends Controller
         $image->storeAs('public/product/', $image->hashName());
 
         //create post
-        $post = Product_asset::create([
+        $product_asset = Product_asset::create([
             'product_id'     => $request->product_id,
             'image'     => $image->hashName(),
         ]);
 
         //return response
-        return new PostResource(true, 'Data Asset Berhasil Ditambahkan!', $post);
+        return new PostResource(true, 'Data Asset Berhasil Ditambahkan!', $product_asset);
     }
     public function destroy(Product_asset $product_asset)
     {

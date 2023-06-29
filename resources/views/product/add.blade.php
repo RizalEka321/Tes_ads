@@ -74,6 +74,7 @@
                         </div>
                     </div>
                     <div class="mb-3">
+                        <label for="gambar">Gambar :</label>
                         <input type="file" name="images[]" class="form-control" multiple>
                     </div>
                 </div>

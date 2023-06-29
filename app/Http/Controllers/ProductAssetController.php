@@ -97,6 +97,6 @@ class ProductAssetController extends Controller
         Storage::delete('/public/product/'. $id->image);
         //delete asset
         $id->delete();
-        return back()->with('errors', 'Gambar berhasil dihapus.');
+        return back()->with('success', 'Gambar berhasil dihapus.');
     }
 }

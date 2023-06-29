@@ -20,12 +20,17 @@ class ProductController extends Controller
     }
     public function store(Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'category_id' => 'required',
             'name' => 'required|string|min:2|max:100',
             'description' => 'required',
             'stock' => 'required',
         ]);
+
+        //check if validation fails
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
 
         $id = Str::replace('...', '', Str::limit($request->name, 2)) . mt_rand(1, 99);
         $product = Product::create([
@@ -39,10 +44,10 @@ class ProductController extends Controller
         ]);
 
         $input = $request->file('images');
-        foreach ( $input as $image) {
+        foreach ($input as $image) {
             $image->storeAs('public/product/', $image->hashName());
             $product = Product::findOrFail($id);
-            $product->images()->create([
+            Product_asset::create([
                 'product_id' => $id,
                 'image'     => $image->hashName(),
             ]);
