@@ -16,7 +16,7 @@ class ProductAssetController extends Controller
         //define validation rules
         $validator = Validator::make($request->all(), [
             'product_id'     => 'required',
-            'image'     => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image'     => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         //check if validation fails

@@ -25,6 +25,7 @@ class ProductController extends Controller
             'name' => 'required|string|min:2|max:100',
             'description' => 'required',
             'stock' => 'required',
+            'images'     => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         //check if validation fails
