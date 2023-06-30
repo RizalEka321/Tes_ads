@@ -48,6 +48,7 @@ class ProductController extends Controller
             'description' => 'required',
             'stock' => 'required',
             'price' => 'required',
+            'images'     => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         $id = Str::replace('...', '', Str::limit($request->name, 2)) . mt_rand(1, 99);
